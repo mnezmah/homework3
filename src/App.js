@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './App.css';
 import { connect } from 'react-redux'
 import { addModel } from './actions/addModel'
-
+import Models from './components/Models'
 
 const data = [
   {
@@ -31,7 +31,6 @@ const data = [
   }
 ]
 
-
 class App extends Component {
   state = {
     selection: ""
@@ -39,31 +38,41 @@ class App extends Component {
 
   updateSelection = (e) => {
     const option = e.target.value
-    this.setState({ 
+    this.setState({
       selection: option
     })
-    console.log('UPDATED STATE: ', this.state)
   }
 
   onClickHandler = (e) => {
     e.preventDefault()
-    const rightItem =  data.find(entry => {
-    if (this.state.selection === entry.name) {
-      return entry
-    }
-  })
+    const rightItem = data.find(entry => {
+      if (this.state.selection === entry.name) {
+        return entry
+      }
+    })
     this.props.addModel(rightItem)
   }
 
   render() {
-
-    console.log('STATE', this.state)
     return (
       <div className="App">
+        {this.props.selectedModels.map(selectedModel => {
+          return <Models
+            key={selectedModel.name}
+            name={selectedModel.name}
+            manufacturer={selectedModel.manufacturer}
+            year={selectedModel.year}
+            origin={selectedModel.origin} />
+        })
+        }
         <select onChange={this.updateSelection}>
           <option value="">-- pick  a model --</option>
           {data.map(model => {
-            return <option key={model.name} value={model.name}>{model.name} ({model.year}) </option>
+            return <option
+              key={model.name}
+              value={model.name}>
+              {model.name} ({model.year})
+            </option>
           })}
         </select>
         <button onClick={this.onClickHandler}>Add</button>
@@ -74,7 +83,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    selectedModel: state.selection
+    selectedModels: state.reducer
   }
 }
 
