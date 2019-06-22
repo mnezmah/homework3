@@ -37,9 +37,9 @@ class App extends Component {
         <div className="App">
           <select>
             <option value="">-- pick  a model--</option>
-            <option value="Ivel Z3">Ivel Z3 (1969)</option>
-            <option value="Bally Astrocade">Bally Astrocade (1977)</option>
-            <option value="Sord M200 Smart Home Computer">Sord M200 Smart Home Computer (1971)</option>
+            {data.map(model => {
+              return <option value={model.name}>{model.name} ({model.year}) </option>
+            })}
           </select>
         </div>
       </Provider>
