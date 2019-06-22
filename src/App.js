@@ -54,6 +54,7 @@ class App extends Component {
               return <option key ={model.name} value={model.name}>{model.name} ({model.year}) </option>
             })}
           </select>
+          <button>Add</button>
           {/* <Select select ={this.props.updateSelection}/> */}
         </div>
     );
