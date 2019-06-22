@@ -9,13 +9,16 @@ class App extends Component {
   }
 
   updateSelection = (e) => {
-    // e.preventDefault()
-    console.log('i am clicked ;)')
     const option = e.target.value
     this.setState({
       selection: option
     })
     console.log('UPDATED STATE: ', this.state)
+  }
+
+  onClickHandler = (e) => {
+    e.preventDefault()
+    console.log('button is clicked ;)')
   }
 
   render() {
@@ -54,7 +57,7 @@ class App extends Component {
               return <option key ={model.name} value={model.name}>{model.name} ({model.year}) </option>
             })}
           </select>
-          <button>Add</button>
+          <button onClick ={this.onClickHandler}>Add</button>
           {/* <Select select ={this.props.updateSelection}/> */}
         </div>
     );
