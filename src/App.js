@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
-import { Provider, connect } from 'react-redux'
-import store from './store''
+import { connect } from 'react-redux'
 
 
 class App extends Component {
@@ -48,7 +47,6 @@ class App extends Component {
     ]
     console.log('STATE', this.state)
     return (
-      <Provider store={store}>
         <div className="App">
           <select onChange={this.updateSelection}>
             <option value="">-- pick  a model --</option>
@@ -58,16 +56,15 @@ class App extends Component {
           </select>
           {/* <Select select ={this.props.updateSelection}/> */}
         </div>
-      </Provider>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
+// const mapStateToProps = (state) => {
+//   return {
 
-  }
-}
+//   }
+// }
 
-export default connect(mapStateToProps)(App);
+export default connect(null)(App);
 
