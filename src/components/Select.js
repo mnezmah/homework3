@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
 
 export default class Select extends Component {
+state = {
   
+}
+
+  updateSelection = (e) => {
+    e.preventDefault()
+    console.log('i am clicked ;)')
+    const option = e.target.value
+      this.setState({
+        selection : option
+      })
+      console.log('UPDATED STATE: ', this.state)
+  }
   render() {
     const data = [
       {
@@ -31,7 +43,7 @@ export default class Select extends Component {
     ]
     return (
       <div>
-         <select>
+         <select onChange = {this.updateSelection}>
             <option value="">-- pick  a model --</option>
             {data.map(model => {
               return <option value={model.name}>{model.name} ({model.year}) </option>
