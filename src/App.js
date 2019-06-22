@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './App.css';
-import { Provider } from 'react-redux'
-import store from './store'
-// import Select from './components/Select'
+import { Provider, connect } from 'react-redux'
+import store from './store''
+
 
 class App extends Component {
   state = {
@@ -63,4 +63,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps)(App);
+
