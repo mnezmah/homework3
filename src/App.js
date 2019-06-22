@@ -31,6 +31,7 @@ const data = [
   }
 ]
 
+
 class App extends Component {
   state = {
     selection: ""
@@ -38,7 +39,7 @@ class App extends Component {
 
   updateSelection = (e) => {
     const option = e.target.value
-    this.setState({
+    this.setState({ 
       selection: option
     })
     console.log('UPDATED STATE: ', this.state)
@@ -46,9 +47,12 @@ class App extends Component {
 
   onClickHandler = (e) => {
     e.preventDefault()
-    console.log('button is clicked ;)')
-    this.props.addModel(this.state.selection)
-    console.log('THIS.STATE.SELECTION:', this.state.selection)
+    const rightItem =  data.find(entry => {
+    if (this.state.selection === entry.name) {
+      return entry
+    }
+  })
+    this.props.addModel(rightItem)
   }
 
   render() {
